@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Form Validator PRO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="page">
+      <section class="form-section">
+        <div class="form-shell">
+          <div class="form-intro">
+            <span class="intro-badge">Modern UI Validation</span>
+            <h1 class="intro-title">
+              Create a polished account form experience.
+            </h1>
+            <p class="intro-text">
+              A premium front-end form focused on clean validation states,
+              smooth transitions, and a modern dark interface.
+            </p>
+
+            <div class="intro-features">
+              <div class="feature-pill">Live validation</div>
+              <div class="feature-pill">Error states</div>
+              <div class="feature-pill">Success feedback</div>
+              <div class="feature-pill">Modern UX</div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <div class="form-card-glow form-card-glow-1"></div>
+            <div class="form-card-glow form-card-glow-2"></div>
+
+            <div class="form-card-header">
+              <span class="form-label-top">Get Started</span>
+              <h2>Create Your Account</h2>
+              <p>Fill in the details below to test modern validation flow.</p>
+            </div>
+
+            <form class="form" id="signupForm" novalidate>
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <small class="error-message"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+                <small class="error-message"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    id="togglePassword"
+                  >
+                    Show
+                  </button>
+                </div>
+
+                <div class="strength-box">
+                  <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                  </div>
+                  <span class="strength-text" id="strengthText"
+                    >Password strength</span
+                  >
+                </div>
+                <small class="error-message"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    id="toggleConfirmPassword"
+                  >
+                    Show
+                  </button>
+                </div>
+                <small class="error-message"></small>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                Create Account
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="successModal">
+      <div class="modal-box">
+        <div class="modal-icon">✓</div>
+        <h3>Account Created</h3>
+        <p>Your account has been created successfully.</p>
+        <button type="button" class="modal-btn" id="closeModalBtn">
+          Close
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

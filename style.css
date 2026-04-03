@@ -1,0 +1,548 @@
+/* ============================================= */
+/* 1. ROOT VARIABLES */
+/* ============================================= */
+:root {
+  --bg-color: #07080d;
+  --bg-secondary: #0d1018;
+  --bg-tertiary: #121624;
+
+  --surface-color: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --surface-soft: rgba(255, 255, 255, 0.02);
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text-color: #f5f7ff;
+  --text-muted: #adb6c7;
+  --text-soft: #7f889a;
+
+  --accent-color: #7c5cff;
+  --accent-color-strong: #9d86ff;
+  --accent-secondary: #22c7a5;
+  --accent-danger: #ff5d7a;
+  --accent-success: #2fd38b;
+
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus: rgba(124, 92, 255, 0.45);
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 45px rgba(124, 92, 255, 0.22);
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+
+  --transition-fast: 0.25s ease;
+  --transition-medium: 0.35s ease;
+  --transition-slow: 0.5s ease;
+
+  --container-width: 1200px;
+}
+
+/* ============================================= */
+/* 2. RESET */
+/* ============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(124, 92, 255, 0.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 199, 165, 0.12),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #06070b 0%, #0b0d14 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  border: none;
+  background: none;
+}
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================= */
+/* 3. PAGE LAYOUT */
+/* ============================================= */
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+.form-section {
+  width: min(100%, var(--container-width));
+}
+.form-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+/* ============================================= */
+/* 4. INTRO PANEL */
+/* ============================================= */
+
+.form-intro {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02)
+    ),
+    var(--surface-soft);
+  padding: 48px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+}
+.form-intro::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: -80px;
+  border-radius: 50%;
+  background: rgba(124, 92, 255, 0.15);
+  filter: blur(50px);
+}
+.form-intro::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  bottom: -100px;
+  left: -60px;
+  border-radius: 50%;
+  background: rgba(34, 199, 165, 0.12);
+  filter: blur(60px);
+}
+.intro-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  background: rgba(124, 92, 255, 0.1);
+  border-radius: 999px;
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  color: #c9beff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.intro-title {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  max-width: 12ch;
+}
+.intro-text {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  max-width: 560px;
+}
+.intro-features {
+  position: relative;
+  z-index: 1;
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.feature-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  padding: 12px 16px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+/* ============================================= */
+/* 5. FORM CARD */
+/* ============================================= */
+
+.form-card {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(12, 15, 23, 0.9);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+}
+.form-card-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.form-card-glow-1 {
+  width: 180px;
+  height: 180px;
+  top: -50px;
+  right: -50px;
+  background: rgba(124, 92, 255, 0.22);
+}
+.form-card-glow-2 {
+  width: 160px;
+  height: 160px;
+  bottom: -60px;
+  left: -50px;
+  background: rgba(34, 199, 165, 0.14);
+}
+.form-card-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+.form-label-top {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--accent-secondary);
+  font-size: 0.84em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.form-card-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.form-card-header p {
+  margin-top: 14px;
+  color: var(--text-muted);
+}
+
+/* ============================================= */
+/* 6. FORM */
+/* ============================================= */
+
+.form {
+  position: relative;
+  z-index: 1;
+}
+.form-group + .form-group {
+  margin-top: 20px;
+}
+.form-group label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.input-wrapper {
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    background var(--transition-fast);
+}
+.input-wrapper:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12);
+  transform: translateY(-1px);
+}
+.input-wrapper input {
+  width: 100%;
+  font-size: 1rem;
+}
+.input-wrapper input::placeholder {
+  color: var(--text-soft);
+}
+.toggle-password {
+  flex-shrink: 0;
+  margin-left: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.toggle-password:hover {
+  color: var(--text-color);
+}
+.error-message {
+  display: block;
+  min-height: 20px;
+  margin-top: 8px;
+  font-size: 0.88em;
+  color: var(--accent-danger);
+}
+
+/* ============================================= */
+/* 7. VALIDATION STATES */
+/* ============================================= */
+
+.form-group.error .input-wrapper {
+  border-color: rgba(255, 93, 122, 0.65);
+  box-shadow: 0 0 0 4px rgba(255, 93, 122, 0.08);
+}
+
+.form-group.success .input-wrapper {
+  border-color: rgba(47, 211, 139, 0.6);
+  box-shadow: 0 0 0 4px rgba(47, 211, 139, 0.08);
+}
+
+.form-group.success .error-message {
+  color: var(--accent-success);
+}
+
+/* ============================================= */
+/* 8. SUBMIT BUTTON */
+/* ============================================= */
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--accent-color-strong)
+  );
+  min-height: 58px;
+  margin-top: 24px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+  box-shadow: var(--shadow-glow);
+}
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+.submit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ============================================= */
+/* 10. SUCCESS MODAL */
+/* ============================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 10, 0.72);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-medium),
+    visibility var(--transition-medium);
+  z-index: 2000;
+}
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-box {
+  width: min(100%, 460px);
+  padding: 36px 28px;
+  text-align: center;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(12, 15, 23, 0.96);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(20px) scale(0.96);
+  transition: transform var(--transition-medium);
+}
+.modal-overlay.show .modal-box {
+  transform: translateY(0) scale(1);
+}
+.modal-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(47, 211, 139, 0.14);
+  border: 1px solid rgba(47, 211, 139, 0.35);
+  color: var(--accent-success);
+  font-weight: 800;
+  box-shadow: 0 0 30px rgba(47, 211, 139, 0.12);
+}
+.modal-box h3 {
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.modal-btn {
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--accent-color-strong)
+  );
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* ============================================= */
+/* 11. PASSWORD STRENGTH BAR */
+/* ============================================= */
+.strength-box {
+  margin-top: 10px;
+}
+.strength-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.strength-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  transition:
+    width var(--transition-medium),
+    background var(--transition-medium);
+}
+.strength-text {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* ============================================= */
+/* 9. RESPONSIVE */
+/* ============================================= */
+
+@media (max-width: 1024px) {
+  .form-shell {
+    grid-template-columns: 1fr;
+  }
+  .intro-title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 24px 16px;
+  }
+  .form-intro,
+  .form-card {
+    padding: 28px;
+    border-radius: 26px;
+  }
+  .intro-title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .form-intro,
+  .form-card {
+    padding: 22px;
+  }
+  .input-wrapper {
+    min-height: 56px;
+    padding: 0 16px;
+  }
+  .submit-btn {
+    min-height: 54px;
+  }
+}
