@@ -8,7 +8,7 @@ This project focuses on creating a clean, professional user experience with real
 
 ## 🚀 Live Demo
 
-👉 
+👉 https://johnyisbackk.github.io/js-form-validator-pro/
 
 ---
 
